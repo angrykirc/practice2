@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Результаты анализа</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        .results-container {
+            display: flex;
+            gap: 30px;
+            margin: 30px 0;
+        }
+        .image-container {
+            flex: 1;
+        }
+        .stats-container {
+            flex: 1;
+        }
+        img {
+            max-width: 100%;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .stat-card {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .stat-value {
+            font-size: 24px;
+            font-weight: bold;
+            color: #4CAF50;
+            margin: 10px 0;
+        }
+        .back-button {
+            display: block;
+            text-align: center;
+            background-color: #2196F3;
+            color: white;
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        .back-button:hover {
+            background-color: #0b7dda;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Результаты анализа</h1>
+        
+        <div class="results-container">
+            <div class="image-container">
+                <h2>Результат детекции: {{ filename }}</h2>
+                <img src="{{ image_url }}" alt="Результат детекции">
+            </div>
+            
+            <div class="stats-container">
+                <div class="stat-card">
+                    <h3>Всего транспортных средств</h3>
+                    <div class="stat-value">{{ total_vehicles }}</div>
+                    <h3>Всего мест на парковке</h3>
+                    <div class="stat-value">{{ max_parking_size }}</div>
+                </div>
+                
+                <div class="stat-card">
+                    <h3>Детализация по типам</h3>
+                    <p>Легковые автомобили: {{ details.car }}</p>
+                    <p>Автобусы: {{ details.bus }}</p>
+                    <p>Грузовики: {{ details.truck }}</p>
+                    <p>Мотоциклы: {{ details.motorcycle }}</p>
+                </div>
+                
+                <div class="stat-card">
+                    <h3>Статус обработки</h3>
+                    <p>{{ message }}</p>
+                </div>
+            </div>
+        </div>
+        
+        <a href="/" class="back-button">Анализировать другое изображение</a>
+    </div>
+</body>
+</html>
